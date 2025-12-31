@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instant AI Bikini Generator | Create Bikini Photos in Seconds</title>
+    <meta name="description" content="Use our powerful AI bikini generator to instantly transform your photos. See yourself in any swimwear style with just one click. Fast, free, and easy to use.">
+    <meta name="keywords" content="AI bikini generator, swimwear try on, photo transformation, AI fashion tool, virtual bikini, free AI tool, image editor, bikini photo editor">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bikini1-2.com/">
+    <meta property="og:title" content="Instant AI Bikini Generator | Create Bikini Photos in Seconds">
+    <meta property="og:description" content="Use our powerful AI bikini generator to instantly transform your photos. See yourself in any swimwear style with just one click. Fast, free, and easy to use.">
+    <meta property="og:image" content="images/hero-bg.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Instant AI Bikini Generator | Create Bikini Photos in Seconds">
+    <meta property="twitter:description" content="Use our powerful AI bikini generator to instantly transform your photos. See yourself in any swimwear style with just one click. Fast, free, and easy to use.">
+    <meta property="twitter:image" content="images/hero-bg.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Bikini1 2</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#how-to-use">How it Works</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <!-- Button inside nav for mobile structure -->
+                    <li class="nav-btn-item"><a href="#playground" class="btn btn-sm btn-primary">Try It Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <!-- Layer 1: Background Image -->
+        <div class="hero-bg-image">
+            <img src="images/hero-bg.jpg" alt="Abstract rose gold marble background">
+        </div>
+        
+        <!-- Layer 2: Animation Overlay -->
+        <div class="hero-bg-animation" id="hero-animation">
+            <!-- Particles injected by JS -->
+        </div>
+        
+        <!-- Layer 3: Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Layer 4: Content -->
+        <div class="hero-content fade-in-up">
+            <h1>Instant AI Bikini Generator: See Your New Look in Seconds</h1>
+            <p class="lead">Unleash your creativity without spending a dime. Our AI bikini generator is totally free to use, with no watermarks or limits. Start creating amazing bikini visuals right now.</p>
+            <div class="hero-cta">
+                <a href="#playground" class="btn btn-primary btn-lg btn-pulse">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>How to Use Our Instant AI Bikini Generator for Quick Photo Transformations</h2>
+                <p>Discover the simplest way to create stunning bikini photos. This guide walks you through using our AI bikini generator to apply different swimwear styles to your images in seconds. No complex tools or editing skills needed—just upload and see the magic happen.</p>
+            </div>
+
+            <div class="playground-grid">
+                <!-- Left: Upload Control -->
+                <div class="control-panel card-glass fade-in-left">
+                    <div class="upload-zone" id="upload-zone">
+                        <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp" hidden>
+                        <div class="upload-content" id="upload-placeholder">
+                            <div class="upload-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            </div>
+                            <h3>Upload Photo</h3>
+                            <p class="text-sm">Drag & drop or click to browse</p>
+                            <span class="file-info">JPG, PNG, WEBP up to 5MB</span>
+                        </div>
+                        <img id="preview-image" class="preview-image hidden" alt="Upload preview">
+                        <button id="remove-btn" class="remove-btn hidden" aria-label="Remove image">×</button>
+                    </div>
+                    
+                    <div class="controls-actions">
+                        <button id="generate-btn" class="btn btn-primary btn-full" disabled>
+                            Generate New Look
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Result Display -->
+                <div class="result-panel card-glass fade-in-right">
+                    <div class="result-display" id="result-container">
+                        <div id="result-placeholder" class="placeholder-state">
+                            <div class="placeholder-icon">✨</div>
+                            <p>Your transformation will appear here</p>
+                        </div>
+                        
+                        <div id="loading-state" class="loading-state hidden">
+                            <div class="spinner"></div>
+                            <p class="loading-text">Analyzing image structure...</p>
+                        </div>
+                        
+                        <img id="result-final" class="hidden" alt="AI Generated Result">
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button id="download-btn" class="btn btn-secondary btn-full" disabled>
+                            Download Result
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-to-use" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>How Bikini Generator Works?</h2>
+                <p>Simple steps to transform your photos instantly.</p>
+            </div>
+            
+            <div class="steps-grid">
+                <!-- Step 1 -->
+                <div class="step-card card card-hover fade-in-up">
+                    <div class="step-number">01</div>
+                    <h3>Upload Photo</h3>
+                    <p>Select & Upload photos from your device to apply Bikini Generator, and make sure uploaded photos must be in high quality with a well-lit background.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-card card card-hover fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="step-number">02</div>
+                    <h3>Apply Bikini Generator</h3>
+                    <p>After the photo is uploaded click on the “Apply Image Effect” button to apply Bikini Generator to your photo.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-card card card-hover fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="step-number">03</div>
+                    <h3>Download & Share</h3>
+                    <p>Download your generated Bikini Generator to your device and share it on your favorite social media platform, and with your friends and family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Transformation Gallery</h2>
+                <p>See what's possible with our AI technology.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item card-border-reveal fade-in-up">
+                    <img src="images/gallery-result-1.jpg" alt="Woman in floral bikini on beach" loading="lazy">
+                    <div class="gallery-caption">Beach Style</div>
+                </div>
+                <div class="gallery-item card-border-reveal fade-in-up" style="transition-delay: 0.1s;">
+                    <img src="images/gallery-result-2.jpg" alt="Fit man shirtless outdoors" loading="lazy">
+                    <div class="gallery-caption">Fitness Look</div>
+                </div>
+                <div class="gallery-item card-border-reveal fade-in-up" style="transition-delay: 0.2s;">
+                    <img src="images/gallery-result-3.jpg" alt="Glamorous woman in rose gold bikini" loading="lazy">
+                    <div class="gallery-caption">Luxury Resort</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>What People Say about us</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Review 1 -->
+                <div class="testimonial-card card fade-in-up">
+                    <div class="quote-icon">“</div>
+                    <p class="review-text">This tool is a lifesaver for quick mockups. I get so many ideas in just a few minutes, which really speeds up my workflow.</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-details">
+                            <h4>Grace</h4>
+                            <span class="role">Content Creator</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="testimonial-card card fade-in-up" style="transition-delay: 0.1s;">
+                    <div class="quote-icon">“</div>
+                    <p class="review-text">Honestly blown away by the quality of the outputs. The results look incredibly realistic and are perfect for my projects.</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-details">
+                            <h4>Ethan</h4>
+                            <span class="role">Web user from UK</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="testimonial-card card fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="quote-icon">“</div>
+                    <p class="review-text">I've been using Bikini Generator with Max Studio and it's a game changer for creating concept art. Super intuitive and powerful.</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-details">
+                            <h4>Isla</h4>
+                            <span class="role">Digital Artist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            
+            <div class="faq-container card-glass">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What is the AI Bikini Generator?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The Bikini Generator is an advanced AI image effect. You upload a photograph, and our tool intelligently applies a virtual bikini to the subject in the image, creating a realistic and seamless transformation.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How much time does it take to process an image?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The processing time can vary slightly based on the complexity and resolution of your uploaded photo. However, our platform is optimized for speed, delivering your final image significantly faster than most competitors, typically within seconds.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is the Bikini Generator free to use?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, you can get started for free! When you sign up for an account on our website, we provide you with free credits that you can use to experience the Bikini Generator and other AI tools we offer.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are my uploaded photos kept private and secure?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. We prioritize your privacy. Your photos are uploaded via a secure connection, used only to generate the effect, and are never shared with third parties. All uploaded images are automatically deleted from our servers after a short period.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What type of photos produce the best results?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For optimal results, we recommend using clear, high-quality images where the subject is well-lit and facing forward. Full-body or half-body shots work best, as they provide the AI with enough context to apply the effect accurately.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Which file formats are supported for upload?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Our tool supports all common image formats, including JPG, PNG, and WEBP. You can upload directly from your computer or mobile device without needing to convert your files.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Can I download and share the generated images?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Once your image is generated, you can instantly download it in high resolution. You are free to share your creation with friends or on your social media profiles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">Bikini1 2</a>
+                    <p>Instant AI Bikini Generator. Create stunning swimwear visuals in seconds with our advanced AI technology.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#playground">Generator</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#how-to-use">How it Works</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <button class="footer-link-btn" data-modal-target="privacy-modal">Privacy Policy</button>
+                        <button class="footer-link-btn" data-modal-target="terms-modal">Terms of Service</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bikini1 2. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Privacy Policy</h3>
+                <button class="close-modal" data-modal-close="privacy-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h4>Last Updated: 2024</h4>
+                
+                <h4>1. Data Collection</h4>
+                <p>We collect only the minimum data necessary:</p>
+                <ul>
+                  <li>Images you upload for processing (temporarily stored)</li>
+                  <li>Basic usage analytics (non-personal)</li>
+                  <li>Browser type and device information</li>
+                </ul>
+
+                <h4>2. Image Processing</h4>
+                <p>Your uploaded images are:</p>
+                <ul>
+                  <li>Processed securely on our servers</li>
+                  <li>Automatically deleted within 24 hours</li>
+                  <li>Never shared with third parties</li>
+                  <li>Not used for AI training without consent</li>
+                </ul>
+
+                <h4>3. Data Security</h4>
+                <p>All data transmission is encrypted using SSL/TLS protocols.</p>
+
+                <h4>4. Cookies</h4>
+                <p>We use essential cookies only for site functionality.</p>
+
+                <h4>5. Your Rights</h4>
+                <p>You have the right to request deletion of any stored data.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Terms of Service</h3>
+                <button class="close-modal" data-modal-close="terms-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h4>Last Updated: 2024</h4>
+
+                <h4>1. Acceptance of Terms</h4>
+                <p>By using this service, you agree to these Terms.</p>
+
+                <h4>2. Service Description</h4>
+                <p>This service provides AI-powered image transformation. Provided "as-is" without warranties.</p>
+
+                <h4>3. Acceptable Use</h4>
+                <p>You agree NOT to upload:</p>
+                <ul>
+                  <li>Illegal or unlawful content</li>
+                  <li>Explicit, pornographic, or obscene material</li>
+                  <li>Content depicting violence or harm</li>
+                  <li>Images you do not have rights to use</li>
+                </ul>
+
+                <h4>4. Intellectual Property</h4>
+                <p>You retain full ownership of your original images. Generated effects are royalty-free for personal and commercial use.</p>
+
+                <h4>5. Limitation of Liability</h4>
+                <p>We are not liable for any damages arising from the use of this service.</p>
+
+                <h4>6. Modifications</h4>
+                <p>We may update these terms at any time. Continued use constitutes acceptance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
